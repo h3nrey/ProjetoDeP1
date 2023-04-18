@@ -6,3 +6,7 @@ HEIGHT = 400;
 
 # FPS
 FPS = 60;
+
+# Player
+PLAYERSPD = 5
+
