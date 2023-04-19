@@ -2,7 +2,8 @@ import pygame as pg
 import sys # to quit the game loop correctly
 from settings import *
 from player import *
-from draggable import *
+from tile import *
+from map import *
 
 class Game:
 	def __init__(self):
@@ -12,13 +13,16 @@ class Game:
   
 	# start core objects of the game
 	def new_game(self):
+		# map
+		self.map = Map(self.screen)
+
 		# player 
 		self.player = pg.sprite.GroupSingle()
 		self.player.add(Player(self.screen, (WIDTH / 2, HEIGHT / 2)))
 		self.playerRef = self.player.sprite
 
-		self.drag_objects = pg.sprite.Group()
-		self.drag_objects.add(Draggable(True))
+		self.drag_objects = self.map.tiles
+		# self.drag_objects.add(Draggable(True))
 
 		self.clock = pg.time.Clock()
 	
@@ -32,9 +36,10 @@ class Game:
 						pg.quit()
 						sys.exit()
 
-	#draw everything on screen
+	# Draw everything on screen
 	def draw(self):
 			self.screen.fill("black")
+			# self.map.draw_map(self.screen)
 			self.drag_objects.draw(self.screen)
 			self.player.draw(self.screen)
 	

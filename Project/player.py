@@ -11,6 +11,9 @@ class Player(pg.sprite.Sprite):
 
 		# movement
 		self.dir = pg.math.Vector2(0,0)
+
+		# collectables
+		self.collectables = 0
 	
 	def check_player_inputs(self):
 		pressed  = pg.key.get_pressed()
@@ -72,13 +75,13 @@ class Player(pg.sprite.Sprite):
 		# Down Collision
 		if(self.dir == pg.math.Vector2(0,-1)):
 			sprite.rect.bottom = self.rect.top
+
 	def handle_collision(self, sprites):
 		for sprite in sprites:
-			# Normal collision
-			# if(sprite.is_draggable == False):
 			if(sprite.rect.colliderect(self.rect)):
 				if(sprite.is_draggable == False):
 					self.collide(sprite)
+					
 				else:
 					self.drag(sprite)
 				
@@ -88,5 +91,3 @@ class Player(pg.sprite.Sprite):
 		self.check_player_inputs()
 		self.movement()
 		self.handle_collision(collideSprites)
-		pass
-		# self.draw(self.screen)
