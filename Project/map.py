@@ -13,16 +13,27 @@ class Map():
 	def create_map(self):
 		for j, row in enumerate(self.map):
 			for i, cell in enumerate(row):
-				if cell != " ":
-					drag = False
-					color = "darkgray"
-					if cell == "D": 
-						drag = True
-						color = "red"
+				# if cell != " ":
+				drag = False
+				collectable = False
+				color = "#222222"
+				static = False
 
-					tile = Tile(drag, (i * 32, j * 32), color)
-					# print(self.tiles)
-					self.tiles.add(tile)
+				if cell == "X":
+					static = True
+					color = "darkgray"
+
+				if cell == "D": 
+					drag = True
+					color = "red"
+					
+				if cell == "C":
+					collectable = True
+					color = "green"
+
+				tile = Tile((i * 32 + 16, j * 32 + 16), color, static, collectable, drag)
+				# print(self.tiles)
+				self.tiles.add(tile)
 
 	def draw_map(self):
 		for tile in self.world_map:

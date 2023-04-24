@@ -4,6 +4,7 @@ from settings import *
 from player import *
 from tile import *
 from map import *
+from ui import *
 
 class Game:
 	def __init__(self):
@@ -18,11 +19,16 @@ class Game:
 
 		# player 
 		self.player = pg.sprite.GroupSingle()
-		self.player.add(Player(self.screen, (WIDTH / 2, HEIGHT / 2)))
+		self.player.add(Player(self.screen, (400, 400)))
 		self.playerRef = self.player.sprite
 
+		# map
 		self.drag_objects = self.map.tiles
-		# self.drag_objects.add(Draggable(True))
+
+		# ui
+		self.ui = pg.sprite.Group()
+		self.ui.add()
+
 
 		self.clock = pg.time.Clock()
 	

@@ -6,8 +6,9 @@ class Player(pg.sprite.Sprite):
 		super().__init__()
 		self.screen = screen
 		self.image = pg.Surface((PLAYERSIZE, PLAYERSIZE))
-		self.image.fill("green")
+		self.image.fill("yellow")
 		self.rect = self.image.get_rect(center = pos)
+		self.can_move = True;
 
 		# movement
 		self.dir = pg.math.Vector2(0,0)
@@ -32,6 +33,13 @@ class Player(pg.sprite.Sprite):
 
 		else:
 			self.dir = pg.math.Vector2(0,0)
+			
+		
+		if(pressed[pg.K_RIGHT] == False and pressed[pg.K_LEFT] == False and pressed[pg.K_UP] == False and pressed[pg.K_DOWN] == False):
+			self.can_move = True;
+	
+		if(pressed[pg.K_RIGHT] == True or pressed[pg.K_LEFT] == True or pressed[pg.K_UP] == True or pressed[pg.K_DOWN] == True):
+			self.movement()
 	
 	def movement(self):
 		x = self.rect[0]
@@ -39,8 +47,11 @@ class Player(pg.sprite.Sprite):
 
 		pos_x = x + (self.dir.x * PLAYERSPD)
 		pos_y = y + (self.dir.y * PLAYERSPD)
-		self.rect.x = pos_x
-		self.rect.y = pos_y
+
+		if(self.can_move):
+			self.rect.x = pos_x
+			self.rect.y = pos_y
+		self.can_move = False;
 
 	def collide(self, sprite):
 		# Right Collision
@@ -79,15 +90,19 @@ class Player(pg.sprite.Sprite):
 	def handle_collision(self, sprites):
 		for sprite in sprites:
 			if(sprite.rect.colliderect(self.rect)):
-				if(sprite.is_draggable == False):
+				if(sprite.is_static == True):
 					self.collide(sprite)
 					
 				else:
-					self.drag(sprite)
+					if(sprite.is_draggable):
+						self.drag(sprite)
+
+					elif(sprite.is_collectable):
+						self.collectables += 1
+						sprite.destroy()
 				
 			
 
 	def update(self, collideSprites):
 		self.check_player_inputs()
-		self.movement()
 		self.handle_collision(collideSprites)
