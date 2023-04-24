@@ -54,9 +54,10 @@ class Player(pg.sprite.Sprite):
 		pos_x = x + (self.dir.x * PLAYERSPD)
 		pos_y = y + (self.dir.y * PLAYERSPD)
 
-		if(self.can_move):
+		if(self.can_move and self.energia > 0):
 			self.rect.x = pos_x
 			self.rect.y = pos_y
+			self.energia -= 1
 		self.can_move = False;
 
 	def collide(self, sprite):
@@ -108,7 +109,7 @@ class Player(pg.sprite.Sprite):
 						sprite.destroy()
 
 					elif(sprite.tag == TAG_ENERGIA):
-						self.energia += 1
+						self.energia += 10
 						sprite.destroy()
 					
 					elif(sprite.tag == TAG_CLOCK):

@@ -10,6 +10,7 @@ class Game:
 	def __init__(self):
 		pg.init()
 		self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+		pg.display.set_caption("Anja Iluminada")
 		self.new_game()
   
 	# start core objects of the game

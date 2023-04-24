@@ -11,39 +11,48 @@ class Map():
 		self.create_map()
 
 	def create_map(self):
+		# Drawn floor tiles
 		for j, row in enumerate(self.map):
 			for i, cell in enumerate(row):
-				# if cell != " ":
-				color = "#222222"
-				tag = "floor"
-
-				if cell == "X":
-					tag = TAG_BLOCK
-					static = True
-					color = "darkgray"
-
-				if cell == "D": 
-					tag = TAG_DRAGGABLE
-					drag = True
-					color = "brown"
-					
-				if cell == "K":
-					tag = TAG_KEY
-					collectable = True
-					color = "orange"
-
-				if cell == "E":
-					tag = TAG_ENERGIA
-					color = "yellow"
-				
-				if cell == "C":
-					tag = TAG_CLOCK
-					color = "blue"
-				
-
+				color, tag = "#222222", "floor"
 				tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)
-				# print(self.tiles)
 				self.tiles.add(tile)
+
+		# Drawn Object tiles
+		for j, row in enumerate(self.map):
+			for i, cell in enumerate(row):
+				color, tag = "darkgray", ""
+
+				if(cell != " "):
+					
+					if(cell == "X"):
+						color = "darkgray"
+						tag = TAG_BLOCK
+
+					if(cell == "D"):
+						color = "#3F1D0B"
+						tag = TAG_DRAGGABLE
+					
+					if(cell == "E"):
+						color = "#FFBF00"
+						tag = TAG_ENERGIA
+					
+					if(cell == "C"):
+						color = "#6395EC"
+						tag = TAG_CLOCK
+					
+					if(cell == "K"):
+						color = "#DFFF7F"
+						tag = TAG_KEY
+
+
+					tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)
+					self.tiles.add(tile)
+
+				
+
+				
+				
 
 	def draw_map(self):
 		for tile in self.world_map:
