@@ -14,24 +14,34 @@ class Map():
 		for j, row in enumerate(self.map):
 			for i, cell in enumerate(row):
 				# if cell != " ":
-				drag = False
-				collectable = False
 				color = "#222222"
-				static = False
+				tag = "floor"
 
 				if cell == "X":
+					tag = TAG_BLOCK
 					static = True
 					color = "darkgray"
 
 				if cell == "D": 
+					tag = TAG_DRAGGABLE
 					drag = True
-					color = "red"
+					color = "brown"
 					
-				if cell == "C":
+				if cell == "K":
+					tag = TAG_KEY
 					collectable = True
-					color = "green"
+					color = "orange"
 
-				tile = Tile((i * 32 + 16, j * 32 + 16), color, static, collectable, drag)
+				if cell == "E":
+					tag = TAG_ENERGIA
+					color = "yellow"
+				
+				if cell == "C":
+					tag = TAG_CLOCK
+					color = "blue"
+				
+
+				tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)
 				# print(self.tiles)
 				self.tiles.add(tile)
 

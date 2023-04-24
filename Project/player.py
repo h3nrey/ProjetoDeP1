@@ -1,5 +1,7 @@
 import pygame as pg
 from settings import *
+from main import *
+
 
 class Player(pg.sprite.Sprite):
 	def __init__(self, screen, pos):
@@ -9,12 +11,16 @@ class Player(pg.sprite.Sprite):
 		self.image.fill("yellow")
 		self.rect = self.image.get_rect(center = pos)
 		self.can_move = True;
+		self.time = 60
 
 		# movement
 		self.dir = pg.math.Vector2(0,0)
 
-		# collectables
-		self.collectables = 0
+		# keys
+		self.key = 0
+
+		# energia
+		self.energia = PLAYERENERGIA
 	
 	def check_player_inputs(self):
 		pressed  = pg.key.get_pressed()
@@ -90,19 +96,26 @@ class Player(pg.sprite.Sprite):
 	def handle_collision(self, sprites):
 		for sprite in sprites:
 			if(sprite.rect.colliderect(self.rect)):
-				if(sprite.is_static == True):
+				if(sprite.tag == TAG_BLOCK):
 					self.collide(sprite)
 					
 				else:
-					if(sprite.is_draggable):
+					if(sprite.tag == TAG_DRAGGABLE):
 						self.drag(sprite)
 
-					elif(sprite.is_collectable):
-						self.collectables += 1
+					elif(sprite.tag == TAG_KEY):
+						self.key += 1
+						sprite.destroy()
+
+					elif(sprite.tag == TAG_ENERGIA):
+						self.energia += 1
+						sprite.destroy()
+					
+					elif(sprite.tag == TAG_CLOCK):
+						self.time += 10
 						sprite.destroy()
 				
 			
-
 	def update(self, collideSprites):
 		self.check_player_inputs()
 		self.handle_collision(collideSprites)
