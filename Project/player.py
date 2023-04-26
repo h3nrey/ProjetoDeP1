@@ -2,13 +2,21 @@ import pygame as pg
 from settings import *
 from main import *
 
+import os
+
+# get the directory of this file
+sourceFileDir = os.path.dirname(os.path.abspath(__file__))
+
+# join the filepath and the filename
+filePath = os.path.join(sourceFileDir, 'Graphics/anja.png');
 
 class Player(pg.sprite.Sprite):
 	def __init__(self, screen, pos):
 		super().__init__()
 		self.screen = screen
-		self.image = pg.Surface((PLAYERSIZE, PLAYERSIZE))
-		self.image.fill("yellow")
+		self.image = pg.image.load(filePath).convert_alpha()
+		# self.image = pg.Surface((PLAYERSIZE, PLAYERSIZE))
+		# self.image.fill("yellow")
 		self.rect = self.image.get_rect(center = pos)
 		self.can_move = True;
 		self.time = 60
@@ -94,9 +102,18 @@ class Player(pg.sprite.Sprite):
 		if(self.dir == pg.math.Vector2(0,-1)):
 			sprite.rect.bottom = self.rect.top
 
-	def handle_collision(self, sprites):
+	def handle_collision(self, sprites, door):
+		if(door != None):
+			if (door.rect.colliderect(self.rect)):
+				if(self.key < 1):
+					self.collide(door)
+				else:
+					door.destroy()
+				return
+
 		for sprite in sprites:
 			if(sprite.rect.colliderect(self.rect)):
+				
 				if(sprite.tag == TAG_BLOCK):
 					self.collide(sprite)
 					
@@ -115,8 +132,11 @@ class Player(pg.sprite.Sprite):
 					elif(sprite.tag == TAG_CLOCK):
 						self.time += 10
 						sprite.destroy()
+
+					# elif(sprite.tag == TAG_DOOR):
+					# 	sprite.destroy()
 				
 			
-	def update(self, collideSprites):
+	def update(self, collideSprites, door):
 		self.check_player_inputs()
-		self.handle_collision(collideSprites)
+		self.handle_collision(collideSprites, door)

@@ -16,6 +16,7 @@ class Game:
 	# start core objects of the game
 	def new_game(self):
 		# map
+		# self.current_map = map
 		self.map = Map(self.screen)
 
 		# player 
@@ -24,8 +25,9 @@ class Game:
 		self.playerRef = self.player.sprite
 		pg.time.set_timer(pg.USEREVENT, 1000)
 
-		# map
+		# objects
 		self.drag_objects = self.map.tiles
+		self.door = self.map.door
 
 		# game
 		self.time = 60
@@ -58,11 +60,12 @@ class Game:
 			self.screen.fill("black")
 			# self.map.draw_map(self.screen)
 			self.drag_objects.draw(self.screen)
+			self.door.draw(self.screen)
 			self.player.draw(self.screen)
 			self.ui.draw(self.screen)
 	
 	def update(self):
-		self.player.update(self.drag_objects)
+		self.player.update(self.drag_objects, self.door.sprite)
 		self.ui.sprites()[0].update(f"Keys {self.playerRef.key}")
 		self.ui.sprites()[1].update(f"Tempo {self.playerRef.time}")
 		self.ui.sprites()[2].update(f"Energia {self.playerRef.energia}")
