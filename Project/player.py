@@ -113,7 +113,7 @@ class Player(pg.sprite.Sprite):
 
 		for sprite in sprites:
 			if(sprite.rect.colliderect(self.rect)):
-				
+
 				if(sprite.tag == TAG_BLOCK):
 					self.collide(sprite)
 					
@@ -135,7 +135,11 @@ class Player(pg.sprite.Sprite):
 
 					# elif(sprite.tag == TAG_DOOR):
 					# 	sprite.destroy()
-				
+	
+	def check_if_passed_room(self):
+		if(self.rect.x < 0 or self.rect.x > WIDTH or self.rect.y < 0 or self.rect.y > HEIGHT):
+			return True
+		return False
 			
 	def update(self, collideSprites, door):
 		self.check_player_inputs()

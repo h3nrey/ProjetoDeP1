@@ -3,20 +3,23 @@ from settings import *
 from tile import *
 
 class Map():
-	def __init__(self, screen):
-		self.map = map
+	def __init__(self, screen, current_map):
+		self.map = current_map
 		self.world_map = {}
 		self.screen = screen
 		self.tiles = pg.sprite.Group()
 		self.door = pg.sprite.GroupSingle()
-		self.create_map()
+		self.create_map(self.map)
 
-	def create_map(self):
+	def create_map(self, current_map):
+		# clean tiles 
+		self.tiles.empty()
+
 		# Drawn floor tiles
-		self.draw_floor()
+		self.draw_floor(current_map)
 
 		# Drawn Object tiles
-		for j, row in enumerate(self.map):
+		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
 				if(cell == "D"):				
 					tile = Tile((i * 32 + 16, j * 32 + 16), "purple", TAG_DOOR)
@@ -27,8 +30,8 @@ class Map():
 						tile = self.choose_tile(cell, i, j)
 						self.tiles.add(tile)
 
-	def draw_floor(self):
-		for j, row in enumerate(self.map):
+	def draw_floor(self, current_map):
+		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
 				color, tag = "#222222", "floor"
 				tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)

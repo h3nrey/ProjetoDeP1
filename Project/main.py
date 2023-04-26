@@ -16,8 +16,8 @@ class Game:
 	# start core objects of the game
 	def new_game(self):
 		# map
-		# self.current_map = map
-		self.map = Map(self.screen)
+		self.current_map = map1
+		self.map = Map(self.screen, self.current_map)
 
 		# player 
 		self.player = pg.sprite.GroupSingle()
@@ -69,6 +69,11 @@ class Game:
 		self.ui.sprites()[0].update(f"Keys {self.playerRef.key}")
 		self.ui.sprites()[1].update(f"Tempo {self.playerRef.time}")
 		self.ui.sprites()[2].update(f"Energia {self.playerRef.energia}")
+
+		if(self.playerRef.check_if_passed_room()):
+			self.map.create_map(maps[1])
+			self.playerRef.rect.x = 400
+
 		pg.display.update()
 		self.clock.tick(FPS)
 	
