@@ -16,12 +16,12 @@ class Game:
 	# start core objects of the game
 	def new_game(self):
 		# map
-		self.current_map = map1
-		self.map = Map(self.screen, self.current_map)
+		self.current_map_index = 0
+		self.map = Map(self.screen, MAPS[self.current_map_index])
 
 		# player 
 		self.player = pg.sprite.GroupSingle()
-		self.player.add(Player(self.screen, (400, 400)))
+		self.player.add(Player(self.screen, self.map.player_pos))
 		self.playerRef = self.player.sprite
 		pg.time.set_timer(pg.USEREVENT, 1000)
 
@@ -31,6 +31,10 @@ class Game:
 
 		# game
 		self.time = 60
+
+		# custom events
+		self.LEVELPASSED = pg.USEREVENT + 1
+		self.level_passed_event = pg.event.Event(self.LEVELPASSED)
 
 		# ui
 		self.ui = pg.sprite.Group()
@@ -52,8 +56,15 @@ class Game:
 				if(event.type == pg.QUIT):
 						pg.quit()
 						sys.exit()
+
 				if(event.type == pg.USEREVENT):
 					self.playerRef.time -= 1
+				
+				if(event.type == self.LEVELPASSED):
+					self.current_map_index += 1
+					self.map.create_map(MAPS[self.current_map_index])
+					self.playerRef.energia = 24
+
 
 	# Draw everything on screen
 	def draw(self):
@@ -65,14 +76,10 @@ class Game:
 			self.ui.draw(self.screen)
 	
 	def update(self):
-		self.player.update(self.drag_objects, self.door.sprite)
+		self.player.update(self.drag_objects, self.door.sprite, self.level_passed_event)
 		self.ui.sprites()[0].update(f"Keys {self.playerRef.key}")
 		self.ui.sprites()[1].update(f"Tempo {self.playerRef.time}")
 		self.ui.sprites()[2].update(f"Energia {self.playerRef.energia}")
-
-		if(self.playerRef.check_if_passed_room()):
-			self.map.create_map(maps[1])
-			self.playerRef.rect.x = 400
 
 		pg.display.update()
 		self.clock.tick(FPS)
@@ -83,9 +90,6 @@ class Game:
 					self.check_events()
 					self.update()
 					self.draw()
-
-	def printa(self):
-		print(self.time)
 
 if __name__ == "__main__":
 		game = Game() # Create a object of the game class

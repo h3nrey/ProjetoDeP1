@@ -1,6 +1,7 @@
 import pygame as pg
 from settings import *
 from main import *
+from support import *
 
 import os
 
@@ -14,9 +15,10 @@ class Player(pg.sprite.Sprite):
 	def __init__(self, screen, pos):
 		super().__init__()
 		self.screen = screen
-		self.image = pg.image.load(filePath).convert_alpha()
+		self.image = GetSurf("anja")
 		# self.image = pg.Surface((PLAYERSIZE, PLAYERSIZE))
 		# self.image.fill("yellow")
+		print(f"pos: {pos}")
 		self.rect = self.image.get_rect(center = pos)
 		self.can_move = True;
 		self.time = 60
@@ -136,11 +138,14 @@ class Player(pg.sprite.Sprite):
 					# elif(sprite.tag == TAG_DOOR):
 					# 	sprite.destroy()
 	
-	def check_if_passed_room(self):
+	def check_if_passed_room(self, event):
 		if(self.rect.x < 0 or self.rect.x > WIDTH or self.rect.y < 0 or self.rect.y > HEIGHT):
+			self.rect.x = 400
+			pg.event.post(event)
 			return True
 		return False
 			
-	def update(self, collideSprites, door):
+	def update(self, collideSprites, door, event):
 		self.check_player_inputs()
 		self.handle_collision(collideSprites, door)
+		self.check_if_passed_room(event)

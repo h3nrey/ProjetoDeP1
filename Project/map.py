@@ -9,6 +9,7 @@ class Map():
 		self.screen = screen
 		self.tiles = pg.sprite.Group()
 		self.door = pg.sprite.GroupSingle()
+		self.player_pos = (0,0)
 		self.create_map(self.map)
 
 	def create_map(self, current_map):
@@ -22,8 +23,13 @@ class Map():
 		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
 				if(cell == "D"):				
-					tile = Tile((i * 32 + 16, j * 32 + 16), "purple", TAG_DOOR)
+					tile = Tile((i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2), "purple", TAG_DOOR)
 					self.door.add(tile)
+
+				elif(cell == "P"):
+					self.player_pos = (int(i * TILESIZE + TILESIZE / 2), int(j * TILESIZE + TILESIZE / 2))
+					print(f"enter cell P: {self.player_pos}")
+					
 					
 				else: 
 					if(cell != " " and cell != "D"):	
@@ -34,7 +40,7 @@ class Map():
 		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
 				color, tag = "#222222", "floor"
-				tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)
+				tile = Tile((i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2), color, tag)
 				self.tiles.add(tile)
 
 	def choose_tile(self, cell, i, j):
@@ -62,7 +68,7 @@ class Map():
 				tag = TAG_KEY
 
 
-		tile = Tile((i * 32 + 16, j * 32 + 16), color, tag)
+		tile = Tile((i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2), color, tag)
 		return tile
 
 				
