@@ -41,7 +41,7 @@ map2 = [
   ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
 ]
 
-maps = [map1, map2]
+MAPS = [map1, map2]
 # Resolution
 TILESIZE = 32
 WIDTH = TILESIZE * len(map1[0])
