@@ -63,7 +63,7 @@ class Game:
 				if(event.type == self.LEVELPASSED):
 					self.current_map_index += 1
 					self.map.create_map(MAPS[self.current_map_index])
-					self.playerRef.energia = 24
+					self.playerRef.energia = 20
 
 
 	# Draw everything on screen

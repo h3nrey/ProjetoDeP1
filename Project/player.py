@@ -128,7 +128,7 @@ class Player(pg.sprite.Sprite):
 						sprite.destroy()
 
 					elif(sprite.tag == TAG_ENERGIA):
-						self.energia += 10
+						self.energia += 8
 						sprite.destroy()
 					
 					elif(sprite.tag == TAG_CLOCK):
