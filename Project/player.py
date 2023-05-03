@@ -1,6 +1,7 @@
 import pygame as pg
 from settings import *
 from main import *
+from support import *
 
 import os
 
@@ -14,9 +15,10 @@ class Player(pg.sprite.Sprite):
 	def __init__(self, screen, pos):
 		super().__init__()
 		self.screen = screen
-		self.image = pg.image.load(filePath).convert_alpha()
+		self.image = GetSurf("anja")
 		# self.image = pg.Surface((PLAYERSIZE, PLAYERSIZE))
 		# self.image.fill("yellow")
+		print(f"pos: {pos}")
 		self.rect = self.image.get_rect(center = pos)
 		self.can_move = True;
 		self.time = 60
@@ -69,40 +71,56 @@ class Player(pg.sprite.Sprite):
 		self.can_move = False;
 
 	def collide(self, sprite):
+		self.energia += 1
 		# Right Collision
 		if(self.dir == pg.math.Vector2(-1,0)):
-			self.rect.left = sprite.rect.right
+			self.rect.left = sprite.rect.right + 4
 		
 		# Left Collision
 		if(self.dir == pg.math.Vector2(1,0)):
-			self.rect.right = sprite.rect.left
+			self.rect.right = sprite.rect.left - 4
 
 		# Top Collision
 		if(self.dir == pg.math.Vector2(0,1)):
-			self.rect.bottom = sprite.rect.top
+			self.rect.bottom = sprite.rect.top - 4
 
 		# Down Collision
 		if(self.dir == pg.math.Vector2(0,-1)):
-			self.rect.top = sprite.rect.bottom
+			self.rect.top = sprite.rect.bottom + 4
 
-	def drag(self, sprite):
+	def drag(self, box):
+		print(f"player dir { self.dir}")
 		# Right Collision
 		if(self.dir == pg.math.Vector2(-1,0)):
-			sprite.rect.right = self.rect.left
+			if(box.rays["left"] == False):
+				box.rect.right = self.rect.left - 4
+			else:
+				self.collide(box)
+			
 		
 		# Left Collision
-		if(self.dir == pg.math.Vector2(1,0)):
-			sprite.rect.left = self.rect.right
+		elif(self.dir == pg.math.Vector2(1,0)):
+			if(box.rays["right"] == False):
+				box.rect.left = self.rect.right + 4
+			else:
+				self.collide(box)
 
 		# Top Collision
 		if(self.dir == pg.math.Vector2(0,1)):
-			sprite.rect.top = self.rect.bottom
+			if(box.rays["bottom"] == False):
+				box.rect.top = self.rect.bottom + 4
+			else:
+				self.collide(box)
+			
 
 		# Down Collision
 		if(self.dir == pg.math.Vector2(0,-1)):
-			sprite.rect.bottom = self.rect.top
+			if(box.rays["top"] == False):
+				box.rect.bottom = self.rect.top - 4
+			else:
+				self.collide(box)
 
-	def handle_collision(self, sprites, door):
+	def handle_collision(self, sprites, boxes_tiles, door):
 		if(door != None):
 			if (door.rect.colliderect(self.rect)):
 				if(self.key < 1):
@@ -110,6 +128,11 @@ class Player(pg.sprite.Sprite):
 				else:
 					door.destroy()
 				return
+		
+		for box in boxes_tiles:
+			# print(f"box rays {box.rays}")
+			if(box.rect.colliderect(self.rect)):
+				self.drag(box)
 
 		for sprite in sprites:
 			if(sprite.rect.colliderect(self.rect)):
@@ -118,15 +141,12 @@ class Player(pg.sprite.Sprite):
 					self.collide(sprite)
 					
 				else:
-					if(sprite.tag == TAG_DRAGGABLE):
-						self.drag(sprite)
-
-					elif(sprite.tag == TAG_KEY):
+					if(sprite.tag == TAG_KEY):
 						self.key += 1
 						sprite.destroy()
 
 					elif(sprite.tag == TAG_ENERGIA):
-						self.energia += 10
+						self.energia += 14
 						sprite.destroy()
 					
 					elif(sprite.tag == TAG_CLOCK):
@@ -143,7 +163,7 @@ class Player(pg.sprite.Sprite):
 			return True
 		return False
 			
-	def update(self, collideSprites, door, event):
+	def update(self, collideSprites, box_tiles, door, event):
 		self.check_player_inputs()
-		self.handle_collision(collideSprites, door)
+		self.handle_collision(collideSprites, box_tiles, door)
 		self.check_if_passed_room(event)

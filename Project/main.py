@@ -16,17 +16,18 @@ class Game:
 	# start core objects of the game
 	def new_game(self):
 		# map
-		self.current_map_index = 0
-		self.map = Map(self.screen, MAPS[self.current_map_index])
+		self.current_level_index = 0
+		self.map = Map(self.screen, MAPS[self.current_level_index])
 
 		# player 
 		self.player = pg.sprite.GroupSingle()
-		self.player.add(Player(self.screen, (400, 400)))
+		self.player.add(Player(self.screen, self.map.player_pos))
 		self.playerRef = self.player.sprite
 		pg.time.set_timer(pg.USEREVENT, 1000)
 
 		# objects
-		self.drag_objects = self.map.tiles
+		self.tiles = self.map.tiles
+		self.boxes = self.map.box_tiles
 		self.door = self.map.door
 
 		# game
@@ -37,13 +38,7 @@ class Game:
 		self.level_passed_event = pg.event.Event(self.LEVELPASSED)
 
 		# ui
-		self.ui = pg.sprite.Group()
-		key_text = Text((80, 20), "chaves: 0")
-		clock_text = Text((200, 20), "tempo: 60")
-		energia_text = Text((400, 20), "energia: 10")
-		self.ui.add(key_text)
-		self.ui.add(clock_text)
-		self.ui.add(energia_text)
+		self.ui = Ui(self.screen)
 
 		self.clock = pg.time.Clock()
 	
@@ -59,27 +54,34 @@ class Game:
 
 				if(event.type == pg.USEREVENT):
 					self.playerRef.time -= 1
-				
-				if(event.type == self.LEVELPASSED):
-					self.current_map_index += 1
-					self.map.create_map(MAPS[self.current_map_index])
 
+				if(event.type == pg.KEYDOWN):
+					if(event.key == pg.K_r):
+						self.new_game()
 
 	# Draw everything on screen
 	def draw(self):
 			self.screen.fill("black")
-			# self.map.draw_map(self.screen)
-			self.drag_objects.draw(self.screen)
-			self.door.draw(self.screen)
+
+			self.map.draw_map(self.screen)
+
 			self.player.draw(self.screen)
-			self.ui.draw(self.screen)
 	
 	def update(self):
-		self.player.update(self.drag_objects, self.door.sprite, self.level_passed_event)
-		self.ui.sprites()[0].update(f"Keys {self.playerRef.key}")
-		self.ui.sprites()[1].update(f"Tempo {self.playerRef.time}")
-		self.ui.sprites()[2].update(f"Energia {self.playerRef.energia}")
+		self.player.update(self.tiles, self.boxes,self.door.sprite, self.level_passed_event)
 
+		# self.ui.update([
+		# 	f"chaves: {self.playerRef.key}", 
+		# 	f"tempo: {self.playerRef.time}", 
+		# 	f"energia: {self.playerRef.energia}"]
+		# )
+
+		self.ui.update([
+			f"chaves: {self.playerRef.key}", 
+			f"energia: {self.playerRef.energia}"]
+		)
+		
+		self.map.check_tiles_collision()
 		pg.display.update()
 		self.clock.tick(FPS)
 	
