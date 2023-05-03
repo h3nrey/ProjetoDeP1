@@ -26,7 +26,8 @@ class Game:
 		pg.time.set_timer(pg.USEREVENT, 1000)
 
 		# objects
-		self.drag_objects = self.map.tiles
+		self.tiles = self.map.tiles
+		self.boxes = self.map.box_tiles
 		self.door = self.map.door
 
 		# game
@@ -64,17 +65,18 @@ class Game:
 	def draw(self):
 			self.screen.fill("black")
 			# self.map.draw_map(self.screen)
-			self.drag_objects.draw(self.screen)
+			# self.drag_objects.draw(self.screen)
+			self.map.draw_map(self.screen)
 			self.door.draw(self.screen)
 			self.player.draw(self.screen)
 			self.ui.draw(self.screen)
 	
 	def update(self):
-		self.player.update(self.drag_objects, self.door.sprite, self.level_passed_event)
 		self.ui.sprites()[0].update(f"Keys {self.playerRef.key}")
 		self.ui.sprites()[1].update(f"Tempo {self.playerRef.time}")
 		self.ui.sprites()[2].update(f"Energia {self.playerRef.energia}")
-
+		self.map.check_tiles_collision()
+		self.player.update(self.tiles, self.boxes,self.door.sprite, self.level_passed_event)
 		pg.display.update()
 		self.clock.tick(FPS)
 	

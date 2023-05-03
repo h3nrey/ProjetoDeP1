@@ -10,7 +10,7 @@ class Tile(pg.sprite.Sprite):
 		# self.image.fill(color)
 		self.rect = self.image.get_rect(center = pos)
 		self.tag = tag
-
+		
 	def destroy(self):
 		self.kill()
     
