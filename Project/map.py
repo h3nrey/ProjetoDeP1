@@ -27,7 +27,7 @@ class Map():
 		# Drawn Object tiles
 		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
-				cell_pos = (i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2)
+				cell_pos = (i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2 + MAP_Y_OFFSET)
 				
 				if(cell == "D"):				
 					tile = Tile(cell_pos, "purple", TAG_DOOR)
@@ -49,7 +49,7 @@ class Map():
 		for j, row in enumerate(current_map):
 			for i, cell in enumerate(row):
 				color, tag = "#222222", "floor"
-				tile = Tile((i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2), color, tag)
+				tile = Tile((i * TILESIZE + TILESIZE / 2, j * TILESIZE + TILESIZE / 2 + MAP_Y_OFFSET), color, tag)
 				self.floor_tiles.add(tile)
 
 	def choose_tile(self, cell, cell_pos):
@@ -103,8 +103,6 @@ class Map():
 				if(tile.rays["right"] == False and i == len(self.tiles) - 1): 
 					tile.rays["right"] = False
 				
-
-
 	def draw_map(self, display_surface):
 		self.floor_tiles.draw(display_surface)
 		self.tiles.draw(display_surface)

@@ -11,12 +11,12 @@ class Game:
 		pg.init()
 		self.screen = pg.display.set_mode((WIDTH, HEIGHT))
 		pg.display.set_caption("Anja Iluminada")
+		self.current_level_index = 0
 		self.new_game()
   
 	# start core objects of the game
 	def new_game(self):
 		# map
-		self.current_level_index = 0
 		self.map = Map(self.screen, MAPS[self.current_level_index])
 
 		# player 
@@ -54,6 +54,10 @@ class Game:
 
 				if(event.type == pg.USEREVENT):
 					self.playerRef.time -= 1
+
+				if(event.type == self.LEVELPASSED):
+					self.current_level_index += 1
+					self.new_game()
 
 				if(event.type == pg.KEYDOWN):
 					if(event.key == pg.K_r):

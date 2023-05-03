@@ -11,4 +11,3 @@ class Box(Tile):
 				"top": False,
 				"bottom": False,
 			}
-			print("Box conststructor been called")
