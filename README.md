@@ -1,17 +1,5 @@
 # Projeto de P1
 
-## Table of Content
-
-1. Game Story
-2. Gameplay
-3. Controles
-4. Level Design
-5. Tecnologias
-6. Como Rodar
-7. Organização do Projeto
-8. Legenda das tiles
-9. Referências
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Sumário</h2></summary>
@@ -85,7 +73,11 @@ Pygame 2
 <!-- ## Como rodar o jogo? -->
 <h2 id="how-to-run">Como rodar o jogo?</h2>
 <p>
-	O jogo requer que o Python e o Pygame estejam instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o arquivo `main.py` e compile o código
+	O jogo requer que o Python e o Pygame estejam instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o <strong>main.py</strong> em project no terminal e rode 
+	<code>
+		python main.py
+	</code>
+
 </p>
 
 <h2 id="code-organization">Organização do Projeto</h2>
