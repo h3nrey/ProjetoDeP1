@@ -14,6 +14,7 @@
     <li><a href="#tiles-labels">Legenda das tiles</a></li>
     <li><a href="#labor-division">Divisão de tarefas</a></li>
     <li><a href="#concept">Conceitos usados no projeto</a></li>
+		<li><a href="#erros-aprendizados">Erros e Aprendizados</a></li>
     <li><a href="#references">Referências</a></li>
     <li><a href="#galery">Galeria</a></li>
   </ol>
@@ -82,7 +83,7 @@ Pygame 2
 <h2 id="how-to-run">Como rodar o jogo?</h2>
 <p>
 	O jogo requer que o Python e o Pygame estejam instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o <strong>main.py</strong> em project no terminal e rode 
-	<code>
+	<code lang="python">
 		python main.py
 	</code>
 
@@ -90,47 +91,40 @@ Pygame 2
 
 <h2 id="code-organization">Organização do Projeto</h2>
 
-### main.py
+<h3>main.py</h3>
+<p>
+		É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo
+</p>
 
-> É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo
+<h3>settings.py</h3> 
+<p>
+		É o "armazém" de dados do projeto, todos os dados estáticos, como: a estrutura das fazes, resolução do jogo, tamanho das tiles e etc..
+</p>
 
-### settings.py
+<h3>player.py</h3>
+<p>
+	Tudo que o player realiza e suas interações com outros objetos são controlados nesse script.
+</p>
 
-> É o "armazém" de dados do projeto, todos os dados estáticos, como: a estrutura das fazes, resolução do jogo, tamanho das tiles e etc..
+<h3>map.py</h3>
+<p>Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player</p>
 
-### player.py
+<h3>music.py</h3>
+<p>Lida com os sons do jogo, sendo músicas ou efeitos sonoros.</p>
 
-> Tudo que o player realiza e suas interações com outros objetos são controlados nesse script.
+<h3>ui.py</h3>
+<p>Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
+</p>
 
-### map.py
+<h3>tile.py</h3>
+<p>Classe abstrata das tiles do jogo</p>
 
-> Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player
+<h3>button.py</h3>
+<p>Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo
+</p>
 
-### music.py
-
-> Lida com os sons do jogo, sendo músicas ou efeitos sonoros.
-
-### main.py
-
-> Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player
-
-### ui.py
-
-> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
-
-> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
-
-### tile.py
-
-> Classe abstrata das tiles do jogo
-
-### button.py
-
-> Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo
-
-### box.py
-
-> Classe especializada da tile que lida com as particularidades das caixas do jogo
+<h3>box.py</h3>
+<p>Classe especializada da tile que lida com as particularidades das caixas do jogo</p>
 
 <h2 id="tiles-labels">Legenda das tiles no map</h2>
 <ul>
@@ -177,6 +171,40 @@ Utilizamos muitas classes, para a componentizar bastante o nosso projeto. para e
 <p>Para fazer a classe do ClicableRect ser genérica suficientemente para contemplar qualquer botão e deixar um código mais componentizado, fizemos com que a função que ele chame ao ser pressionado fosse vinda de um argumento na sua inicilização</p>
 
 </p>
+
+<h2 id="erros-aprendizados">Erros e Aprendizados</h2>
+
+<table>
+  <tr>
+  <td align="center"><b>Desafio Principal</b></td>
+  <td align="center"><b>Como Resolvemos</b></td>
+  <tr/>
+  <td align="left">Utilização do git e github para o trabalho em equipe</td>
+  <td align="left">Pesquisamos e pedimos ajuda ao lider do projeto para auxiliar o restante da equipe</td>
+ </tr>
+  <td align="center"><b>Erro Principal</b></td>
+  <td align="center"><b>Como Resolvemos</b></td>
+  <tr/>
+  <td align="left">Divisão tardia das tarefas</td>
+  <td align="left">Conseguimos nos reoorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostra o que foi feito ao líder</td>
+ </tr>
+ </tr>
+ </table>
+ 
+ <table>
+  <td align="center"><b>Aprendizados</b></td>
+  <tr/>
+  <td align="left">
+  <ul>
+  <li>Trabalho em equipe</li>
+  <li>Importânica da comunicaçao para a tomada de decisões</li>
+  <li>Versionamento de código Git e Github</li>
+  <li>Pygame features</li>
+  <li>Programação Orientada a Objetos (POO)</li>
+  </ul>
+  </td>
+ </tr>
+ </table>
 
 <h2 id="references">Referências</h2>
 <p>
