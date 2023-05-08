@@ -1,4 +1,4 @@
-# Projeto de P1
+# Bright Angel
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -12,8 +12,10 @@
     <li><a href="#how-to-run">Como Rodar</a></li>
     <li><a href="#code-organization">Organização do Projeto</a></li>
     <li><a href="#tiles-labels">Legenda das tiles</a></li>
-    <li><a href="#erros-aprendizados">Erros e Aprendizados</a></li>
-		<li><a href="#references">Referências</a></li>
+    <li><a href="#labor-division">Divisão de tarefas</a></li>
+    <li><a href="#concept">Conceitos usados no projeto</a></li>
+    <li><a href="#references">Referências</a></li>
+    <li><a href="#galery">Galeria</a></li>
   </ol>
 </details>
 
@@ -64,12 +66,17 @@
 <a href="https://www.python.org">
  Python 3
 </a>
-<br>
+<p>Requisito obrigatório do projeto</p>
+
 <a href="https://www.pygame.org/wiki/GettingStarted">
 Pygame 2
 </a>
+<p>Utilizamos o pygame porque é a biblioteca para jogos no ecosystema python mais popular, e ela realmente disponibiliza várias ferramentas que ajudou bastante o desenvolvimento do jogo, como a detecção de colisão entre objetos, detecção de inputs do teclado e mouse, um tratamento basico das imagens e etc... Além disso, como a finalidade do projeto é para é para colocarmos em prática o conhecimento em POO, ao utilizar o pygame isso é alcançado quase que naturalmente pois praticamente todo projeto vai precisar sprites e para usar isso vai ter que herdar da classe Sprite do pygame.</p>
 <br>
+
 <a href="">OS</a>
+
+<p>biblioteca que ajuda achar o local correto de um arquivo no projeto</p>
 
 <!-- ## Como rodar o jogo? -->
 <h2 id="how-to-run">Como rodar o jogo?</h2>
@@ -111,6 +118,8 @@ Pygame 2
 
 > Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
 
+> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
+
 ### tile.py
 
 > Classe abstrata das tiles do jogo
@@ -135,41 +144,51 @@ Pygame 2
 <li>T_coluna/linha -> tile dos botões, a coluna e linha são as posições da tile do bloco impassável</li>
 </ul>
 
-<h2 id="erros-aprendizados">Erros e Aprendizados</h2>
+<h2 id="labor-division">Divisão de tarefas</h2>
+<h3>Pedro Novaes</h3>
+<p>movimentação, colisão e arraste do player. Além disso ajudou na otimização da geração das tiles e da colisão das caixas</p>
 
-<table>
-  <tr>
-  <td align="center"><b>Desafio Principal</b></td>
-  <td align="center"><b>Como Resolvemos</b></td>
-  <tr/>
-  <td align="left">Utilização do git e github para o trabalho em equipe</td>
-  <td align="left">Pesquisamos e pedimos ajuda ao lider do projeto para auxiliar o restante da equipe</td>
- </tr>
-  <td align="center"><b>Erro Principal</b></td>
-  <td align="center"><b>Como Resolvemos</b></td>
-  <tr/>
-  <td align="left">Divisão tardia das tarefas</td>
-  <td align="left">Conseguimos nos reoorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostra o que foi feito ao líder</td>
- </tr>
- </tr>
- </table>
- 
- <table>
-  <td align="center"><b>Aprendizados</b></td>
-  <tr/>
-  <td align="left">
-  <ul>
-  <li>Trabalho em equipe</li>
-  <li>Importânica da comunicaçao para a tomada de decisões</li>
-  <li>Versionamento de código Git e Github</li>
-  <li>Pygame features</li>
-  <li>Programação Orientada a Objetos (POO)</li>
-  </ul>
-  </td>
- </tr>
- </table>
+<h3>Gabriel Marvin</h3>
+<p>Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui</p>
+
+<h3>Daniel Lapa</h3>
+<p>Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas</p>
+
+<h3>Vinicius Nobre</h3>
+<p>Criou a o sistema da ui, sua classes e os métodos que ela tem</p>
+
+<h3>Marcos Vinicius</h3>
+<p>Criou o map.py e fez todo o sistema de geração das tiles</p>
+
+<h2 id="concepts">Como os conceitos aprendidos na disciplina foram usados no projeto</h2>
+<p>O projeto utilizou muito dos conceitos aprendidos na disciplina, mas os mais relevantes são:
+
+<strong>listas</strong> <br/>
+extenso uso de listas para armazenar as tiles e gerenciar a sua geração, além disso utilizou pontualmente list comphresion para filtrar a lista das tiles, por deixar uma sintaxe bem enxuta e fácil de ler.
+
+<strong>Dicionários</strong> <br/>
+para armazenar alguns dados estáticos como os sons.
+
+<strong>Classes</strong> <br/>
+Utilizamos muitas classes, para a componentizar bastante o nosso projeto. para entender melhor o uso das classes no projeto pode checar o seu <a href="https://www.figma.com/file/UvtJcjRWoRzAYyCXSJ1rUL/Untitled">diagram UML</a>
+
+<strong>Passar funções como argumento</strong> <br/>
+
+<p>Para fazer a classe do ClicableRect ser genérica suficientemente para contemplar qualquer botão e deixar um código mais componentizado, fizemos com que a função que ele chame ao ser pressionado fosse vinda de um argumento na sua inicilização</p>
+
+</p>
 
 <h2 id="references">Referências</h2>
 <p>
 	O jogo foi inspirado em The Talos Principle, Lara Croft GO, Monument Valley
 </p>
+
+<h2 id="galery">Galeria</h2>
+<div style="">
+<div style="transform: translateX(-000px); display: block;">
+<img style="display: inline" src="print_menu.jpg">
+<img style="display: inline" src="print_ingame1.jpg">
+<img style="display: inline" src="print_ingame2.jpg">
+<img style="display: inline" src="print_end.jpg">
+</div>
+</div>
