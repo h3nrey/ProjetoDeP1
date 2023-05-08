@@ -74,57 +74,62 @@ Pygame 2
 </a>
 <p>Utilizamos o pygame porque é a biblioteca para jogos no ecosystema python mais popular, e ela realmente disponibiliza várias ferramentas que ajudou bastante o desenvolvimento do jogo, como a detecção de colisão entre objetos, detecção de inputs do teclado e mouse, um tratamento basico das imagens e etc... Além disso, como a finalidade do projeto é para é para colocarmos em prática o conhecimento em POO, ao utilizar o pygame isso é alcançado quase que naturalmente pois praticamente todo projeto vai precisar sprites e para usar isso vai ter que herdar da classe Sprite do pygame.</p>
 <br>
-
 <a href="">OS</a>
-
 <p>biblioteca que ajuda achar o local correto de um arquivo no projeto</p>
 
 <!-- ## Como rodar o jogo? -->
 <h2 id="how-to-run">Como rodar o jogo?</h2>
 <p>
 	O jogo requer que o Python e o Pygame estejam instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o <strong>main.py</strong> em project no terminal e rode 
-	<code lang="python">
-		python main.py
-	</code>
+	
+```sh
+  python main.py
+```
 
 </p>
 
 <h2 id="code-organization">Organização do Projeto</h2>
 
 <h3>main.py</h3>
-<p>
-		É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo
-</p>
+
+> É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo
+
 
 <h3>settings.py</h3> 
-<p>
-		É o "armazém" de dados do projeto, todos os dados estáticos, como: a estrutura das fazes, resolução do jogo, tamanho das tiles e etc..
-</p>
+
+>	É o "armazém" de dados do projeto, todos os dados estáticos, como: a estrutura das fazes, resolução do jogo, tamanho das tiles e etc..
+
 
 <h3>player.py</h3>
-<p>
-	Tudo que o player realiza e suas interações com outros objetos são controlados nesse script.
-</p>
+
+> Tudo que o player realiza e suas interações com outros objetos são controlados nesse script.
+
 
 <h3>map.py</h3>
-<p>Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player</p>
+
+> Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player
 
 <h3>music.py</h3>
-<p>Lida com os sons do jogo, sendo músicas ou efeitos sonoros.</p>
+
+> Lida com os sons do jogo, sendo músicas ou efeitos sonoros.
 
 <h3>ui.py</h3>
-<p>Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
-</p>
+
+> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
+
 
 <h3>tile.py</h3>
-<p>Classe abstrata das tiles do jogo</p>
+
+> Classe abstrata das tiles do jogo
 
 <h3>button.py</h3>
-<p>Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo
-</p>
+
+> Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo
+
 
 <h3>box.py</h3>
-<p>Classe especializada da tile que lida com as particularidades das caixas do jogo</p>
+
+> Classe especializada da tile que lida com as particularidades das caixas do jogo
 
 <h2 id="tiles-labels">Legenda das tiles no map</h2>
 <ul>
@@ -139,23 +144,29 @@ Pygame 2
 </ul>
 
 <h2 id="labor-division">Divisão de tarefas</h2>
+
 <h3>Pedro Novaes</h3>
-<p>movimentação, colisão e arraste do player. Além disso ajudou na otimização da geração das tiles e da colisão das caixas</p>
+
+> Movimentação, colisão e arraste do player. Além disso ajudou na otimização da geração das tiles e da colisão das caixas
 
 <h3>Gabriel Marvin</h3>
-<p>Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui</p>
+
+> Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui
 
 <h3>Daniel Lapa</h3>
-<p>Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas</p>
+
+> Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas
 
 <h3>Vinicius Nobre</h3>
-<p>Criou a o sistema da ui, sua classes e os métodos que ela tem</p>
+
+> Criou a o sistema da ui, sua classes e os métodos que ela tem
 
 <h3>Marcos Vinicius</h3>
-<p>Criou o map.py e fez todo o sistema de geração das tiles</p>
+
+> Criou o map.py e fez todo o sistema de geração das tiles
 
 <h2 id="concepts">Como os conceitos aprendidos na disciplina foram usados no projeto</h2>
-<p>O projeto utilizou muito dos conceitos aprendidos na disciplina, mas os mais relevantes são:
+O projeto utilizou muito dos conceitos aprendidos na disciplina, mas os mais relevantes são:
 
 <strong>listas</strong> <br/>
 extenso uso de listas para armazenar as tiles e gerenciar a sua geração, além disso utilizou pontualmente list comphresion para filtrar a lista das tiles, por deixar uma sintaxe bem enxuta e fácil de ler.
