@@ -92,7 +92,7 @@ Pygame 2
 
 <h3>main.py</h3>
 
-> É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo
+> É o script principal do projeto, lá que o loop do jogo roda e interliga os componentes centrais do jogo.
 
 
 <h3>settings.py</h3> 
@@ -107,7 +107,7 @@ Pygame 2
 
 <h3>map.py</h3>
 
-> Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player
+> Gera as tiles das fases, lendo a estrutura crua dos mapas e decidindo qual tile usar apartir das tags, além disso seta a posição do player.
 
 <h3>music.py</h3>
 
@@ -115,21 +115,21 @@ Pygame 2
 
 <h3>ui.py</h3>
 
-> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py
+> Cuida de toda a interface do jogo, tanto na parte de criar em si os textos e botões, como de atualizar os seus conteúdos apartir de dados no main.py.
 
 
 <h3>tile.py</h3>
 
-> Classe abstrata das tiles do jogo
+> Classe abstrata das tiles do jogo.
 
 <h3>button.py</h3>
 
-> Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo
+> Classe especializada da tile que lida com as particularidades dos botões que abrem portões no jogo.
 
 
 <h3>box.py</h3>
 
-> Classe especializada da tile que lida com as particularidades das caixas do jogo
+> Classe especializada da tile que lida com as particularidades das caixas do jogo.
 
 <h2 id="tiles-labels">Legenda das tiles no map</h2>
 <ul>
@@ -147,23 +147,23 @@ Pygame 2
 
 <h3>Pedro Novaes</h3>
 
-> Movimentação, colisão e arraste do player. Além disso ajudou na otimização da geração das tiles e da colisão das caixas
+> Movimentação, colisão e arraste do player. Além disso ajudou na otimização da geração das tiles e da colisão das caixas.
 
 <h3>Gabriel Marvin</h3>
 
-> Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui
+> Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui.
 
 <h3>Daniel Lapa</h3>
 
-> Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas
+> Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas.
 
 <h3>Vinicius Nobre</h3>
 
-> Criou a o sistema da ui, sua classes e os métodos que ela tem
+> Criou a o sistema da ui, sua classes e os métodos que ela tem, e criou o evento de reiniciar fase(botão R).
 
 <h3>Marcos Vinicius</h3>
 
-> Criou o map.py e fez todo o sistema de geração das tiles
+> Criou o map.py e fez todo o sistema de geração das tiles.
 
 <h2 id="concepts">Como os conceitos aprendidos na disciplina foram usados no projeto</h2>
 O projeto utilizou muito dos conceitos aprendidos na disciplina, mas os mais relevantes são:
