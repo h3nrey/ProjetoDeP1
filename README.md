@@ -186,7 +186,7 @@ Utilizamos muitas classes, para a componentizar bastante o nosso projeto. para e
   <td align="center"><b>Como Resolvemos</b></td>
   <tr/>
   <td align="left">Divisão tardia das tarefas</td>
-  <td align="left">Conseguimos nos reoorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostra o que foi feito ao líder</td>
+  <td align="left">Conseguimos nos reoorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostrar o que foi feito ao líder</td>
  </tr>
  </tr>
  </table>
@@ -197,7 +197,7 @@ Utilizamos muitas classes, para a componentizar bastante o nosso projeto. para e
   <td align="left">
   <ul>
   <li>Trabalho em equipe</li>
-  <li>Importânica da comunicaçao para a tomada de decisões</li>
+  <li>Importância da comunicaçao para a tomada de decisões</li>
   <li>Versionamento de código Git e Github</li>
   <li>Pygame features</li>
   <li>Programação Orientada a Objetos (POO)</li>
