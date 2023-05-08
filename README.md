@@ -12,7 +12,7 @@
     <li><a href="#how-to-run">Como Rodar</a></li>
     <li><a href="#code-organization">Organização do Projeto</a></li>
     <li><a href="#tiles-labels">Legenda das tiles</a></li>
-    <li><a href="#labor-division">Divisão de tarefas</a></li>
+    <li><a href="#labor-division">Divisão de tarefas<org/a></li>
     <li><a href="#concept">Conceitos usados no projeto</a></li>
 		<li><a href="#erros-aprendizados">Erros e Aprendizados</a></li>
     <li><a href="#references">Referências</a></li>
@@ -24,13 +24,13 @@
 	História do jogo
 </h2>
 <p>
-	A anja brilhante se encontra num labirinto e ela tem que encontrar a chave do portão para escapar do labirinto antes que sua energia vital acabe. Para isso a anja brilhante deve encontrar colétaveis que aumentam sua energia vital que tornando-a capaz de andar de percorrer o labirinto ou aumentar o tempo para a procura da sua escapatória. Ajude ela guiando o caminho que ela deve percorrer para escapar do labirinto. Conto com voce para essa missão...
+	A anja brilhante se encontra num labirinto e ela tem que encontrar a chave do portão para escapar do labirinto antes que sua energia vital acabe. Para isso, a anja deve encontrar colétaveis que aumentam sua energia vital tornando-a capaz de andar e percorrer o labirinto ou aumentar o tempo de procura para sua escapatória. Ajude-a sendo guia pelo caminho para a escapada. Conto com você para essa missão...
 </p>
 
 ## Gameplay
 
 <p>
-	A jogabilidade envolve uma perspectiva de topo em que o jogador tem um número limitado de movimentos para navegar através de um ambiente baseado num quadriculado. Ao longo do caminho, tem de recolher três itens - CHAVES, bem como itens opcionais TEMPO e ENERGIA - para progredir através de vários obstáculos. O jogo também inclui puzzles lógicos que o jogador tem de resolver para avançar. O desafio consiste em gerir os movimentos limitados enquanto recolhe estrategicamente os itens necessários e resolve os puzzles, com a opção de escolher se quer ou não recolher TEMPO e ENERGIA para ajudar no seu progresso.
+	A jogabilidade envolve uma perspectiva de top-down em que o jogador tem um número limitado de movimentos para navegar através dum ambiente baseado num quadriculado. Ao longo do caminho, tem de recolher três itens - CHAVES, bem como itens opcionais TEMPO e ENERGIA - para progredir através de vários obstáculos. O jogo também inclui puzzles lógicos que o jogador tem de resolver para avançar. O desafio consiste em gerir os movimentos limitados enquanto recolhe estrategicamente os itens necessários e resolve os puzzles, com a opção de escolher se quer ou não recolher TEMPO e ENERGIA para ajudar no seu progresso.
 </p>
 
 ## Controles
@@ -72,7 +72,7 @@
 <a href="https://www.pygame.org/wiki/GettingStarted">
 Pygame 2
 </a>
-<p>Utilizamos o pygame porque é a biblioteca para jogos no ecosystema python mais popular, e ela realmente disponibiliza várias ferramentas que ajudou bastante o desenvolvimento do jogo, como a detecção de colisão entre objetos, detecção de inputs do teclado e mouse, um tratamento basico das imagens e etc... Além disso, como a finalidade do projeto é para é para colocarmos em prática o conhecimento em POO, ao utilizar o pygame isso é alcançado quase que naturalmente pois praticamente todo projeto vai precisar sprites e para usar isso vai ter que herdar da classe Sprite do pygame.</p>
+<p>Utilizamos o pygame porque é a biblioteca para jogos no ecossistema python mais popular, e ela realmente disponibiliza várias ferramentas que ajudaram bastante no desenvolvimento do jogo, como a detecção de colisão entre objetos, detecção de inputs do teclado e mouse, um tratamento básico das imagens etc... Além disso, como a finalidade do projeto é para colocarmos em prática o conhecimento de POO, ao utilizar o pygame isso é alcançado quase que naturalmente pois praticamente todo projeto precisará de sprites e para usá-los terá de herdar a classe Sprite do pygame.</p>
 <br>
 <a href="">OS</a>
 <p>biblioteca que ajuda achar o local correto de um arquivo no projeto</p>
@@ -80,7 +80,7 @@ Pygame 2
 <!-- ## Como rodar o jogo? -->
 <h2 id="how-to-run">Como rodar o jogo?</h2>
 <p>
-	O jogo requer que o Python e o Pygame estejam instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o <strong>main.py</strong> em project no terminal e rode 
+	O jogo requer o Python e o Pygame instalados no teu sistema. Instruções sobre como instalar o Python e o Pygame podem ser encontradas nos seus respectivos sites. Abra o <strong>main.py</strong> em project no terminal e rode 
 	
 ```sh
   python main.py
@@ -151,11 +151,11 @@ Pygame 2
 
 <h3>Gabriel Marvin</h3>
 
-> Sistema de Audio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui.
+> Sistema de aúdio do jogo, e Além disso trabalou com Vinicius para criar a classe dos botões de ui.
 
 <h3>Daniel Lapa</h3>
 
-> Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles que não bloqueadas.
+> Sistema de colisão das caixas, desenho do coletável a chave na tela e o sistema de botões em jogo que abre as tiles bloqueadas.
 
 <h3>Vinicius Nobre</h3>
 
@@ -197,7 +197,7 @@ Utilizamos muitas classes, para a componentizar bastante o nosso projeto. para e
   <td align="center"><b>Como Resolvemos</b></td>
   <tr/>
   <td align="left">Divisão tardia das tarefas</td>
-  <td align="left">Conseguimos nos reoorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostrar o que foi feito ao líder</td>
+  <td align="left">Conseguimos nos reorganizar e distribuir as tarefas de uma forma melhor realizando sprints diários com meets para decidir o que seria feito e mostrar o que foi feito ao líder</td>
  </tr>
  </tr>
  </table>
